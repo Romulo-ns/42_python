@@ -6,30 +6,30 @@
 #    By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/08 12:07:07 by romdo-na          #+#    #+#              #
-#    Updated: 2026/07/08 13:12:03 by romdo-na         ###   ########.fr        #
+#    Updated: 2026/07/08 13:18:28 by romdo-na         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 class Plant:
     name: str
     height: float
-    age: int
+    days_old: int
 
     def grow(self) -> None:
         self.height += 0.8
 
-    def increase_age(self) -> None:
-        self.age += 1
+    def age(self) -> None:
+        self.days_old += 1
 
     def show(self) -> None:
-        print(f"{self.name}: {self.height:.1f}cm, {self.age} days old")
+        print(f"{self.name}: {self.height:.1f}cm, {self.days_old} days old")
 
 if __name__ == "__main__":
 
     rose = Plant()
     rose.name = "Rose"
     rose.height = 25
-    rose.age = 30
+    rose.days_old = 30
     
     print("=== Garden Plant Registry ===")
     rose.show()
@@ -38,7 +38,7 @@ if __name__ == "__main__":
 
     for day in range(1, 8):
         print(f"=== Day {day} ===")
-        rose.increase_age()
+        rose.age()
         rose.grow()
         rose.show()
 
