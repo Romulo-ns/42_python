@@ -6,36 +6,36 @@
 #    By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/06 16:26:31 by romdo-na          #+#    #+#              #
-#    Updated: 2026/07/07 16:52:46 by romdo-na         ###   ########.fr        #
+#    Updated: 2026/07/19 18:33:45 by romdo-na         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 class Plant:
-    name: str
-    height: int
-    age: int
-        
-    def show(self):
-        print(f"{self.name}: {self.height}cm, {self.age} days old")
+	name: str
+	height: int
+	age: int
+		
+	def show(self):
+		print(f"{self.name}: {self.height}cm, {self.age} days old")
 
 if __name__ == "__main__":
-    print("=== Garden Plant Registry ===")
+	print("=== Garden Plant Registry ===")
 
-    rose = Plant()
-    rose.name = "Rose"
-    rose.height = 25
-    rose.age = 30
+	rose = Plant()
+	rose.name = "Rose"
+	rose.height = 25
+	rose.age = 30
 
-    sunflower = Plant()
-    sunflower.name = "Sunflower"
-    sunflower.height = 80
-    sunflower.age = 45
+	sunflower = Plant()
+	sunflower.name = "Sunflower"
+	sunflower.height = 80
+	sunflower.age = 45
 
-    cactus = Plant()
-    cactus.name = "Cactus"
-    cactus.height = 15
-    cactus.age = 120
+	cactus = Plant()
+	cactus.name = "Cactus"
+	cactus.height = 15
+	cactus.age = 120
 
-    rose.show()
-    sunflower.show()
-    cactus.show()
+	rose.show()
+	sunflower.show()
+	cactus.show()
