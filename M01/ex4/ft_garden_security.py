@@ -6,7 +6,7 @@
 #    By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/08 14:16:31 by romdo-na          #+#    #+#              #
-#    Updated: 2026/07/19 18:34:15 by romdo-na         ###   ########.fr        #
+#    Updated: 2026/07/28 11:20:08 by romdo-na         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,21 +46,31 @@ class Plant:
 		if height < 0:
 			print(
 				f"{self.name}: "
-				"Error, height can't be negative"
+				"Error, height can't be negative\n"
+				"Height update rejected"
 			)
 			return
 		else:
 			self._height = height
+			print(
+				"Height updated: "
+				f"{self.get_height()}cm"
+			)
 
 	def set_age(self, days_old: int) -> None:
 		if days_old < 0:
 			print(
 				f"{self.name}: "
-				"Error, age can't be negative"
+				"Error, age can't be negative\n"
+				"Age update rejected"
 			)
 			return
 		else:
 			self._days_old = days_old
+			print(
+				"Age updated: "
+				f"{self.get_age()} days"
+			)
 
 	def grow(self) -> None:
 		self._height += 0.8
@@ -79,18 +89,17 @@ if __name__ == "__main__":
 	print("=== Garden Security System ===")
 
 	rose = Plant("Rose", 15.0, 10)
-
 	print("Plant created:", end=" ")
 	rose.show()
+	print("")
 
 	rose.set_height(25)
 	rose.set_age(30)
+	print("")
 
-	rose.set_height(-5)
-	print("Height update rejected")
-
-	rose.set_age(-20)
-	print("Age update rejected")
+	rose.set_height(-25)
+	rose.set_age(-30)
+	print("")
 
 	print("Current state:", end=" ")
 	rose.show()
