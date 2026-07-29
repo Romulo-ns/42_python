@@ -1,35 +1,31 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_plant_types.py                                  :+:      :+:    :+:    #
+#    ft_garden_analytics.py                             :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/07/28 11:22:27 by romdo-na          #+#    #+#              #
-#    Updated: 2026/07/29 11:33:55 by romdo-na         ###   ########.fr        #
+#    Created: 2026/07/29 10:45:50 by romdo-na          #+#    #+#              #
+#    Updated: 2026/07/29 12:53:02 by romdo-na         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Authorized: super(), print(), range(), round()
+# Authorized: super(), print(), range(), round(), staticmethod(),
+# classmethod()
 
 # Requirements:
-# • Start with your Plant class from the previous exercise, which holds the common
-# features (name, height, and age)
-# • Create specialized types: Flower, Tree, and Vegetable
-# • Each specialized type should inherit the basic plant features
-# • Flower needs: a color attribute and ability to bloom()
-# • Tree needs: a trunk_diameter attribute and the ability to produce_shade()
-# • Vegetable needs: a harvest_season and a nutritional_value attributes
-# • When creating specialized plants, call the parent methods from inside your new
-# class using super(). It can be applied to any method, including __init__()
-# • A call to show() on a specialized class needs to print the standard Plant output
-# and the extra characteristics of your specialized plant. Your method override can
-# re-use the already existing code in the parent.
-# • Create at least one instance of each plant type; make the flower bloom; make the
-# nutritional value start from 0, then increase when the vegetable’s age() and grow()
-# methods are called.
-# • Avoid duplicating common plant code across different specialized types.
-# • No need to validate the new attributes in the three new classes.
+# • Create a static method for the Plant class that checks if a specific age given as a
+# parameter is older than a year.
+# • Create a class method that allows you to create an “anonymous” plant directly
+# when you do not yet have all the information.
+# • Create a Seed class that inherits from Flower, and holds the number of seeds once
+# the flower has bloomed. The show() method must be improved accordingly.
+# • Each Plant has an internal system, implemented as a nested class, that holds
+# statistical data: number of grow() calls, number of age() calls, number of show()
+# calls. Encapsulation is required, as well as a display function.
+# • Trees need an extra piece of statistical data: number of produce_shade() calls.
+# • Finally, create a unique function, not part of any class, that displays statistics for
+# any kind of plant.
 
 class Plant:
 	def __init__(
@@ -41,6 +37,7 @@ class Plant:
 		self.name = name
 		self._height = height
 		self._days_old = days_old
+		self._stats = Plant.Stats()
 
 	# Getter
 	def get_height(self) -> float:
@@ -82,9 +79,11 @@ class Plant:
 
 	def grow(self) -> None:
 		self._height += 0.8
+		self._stats.grow_calls += 1
 	
 	def age(self) -> None:
 		self._days_old += 1
+		self._stats.age_calls += 1
 
 	def show(self) -> None:
 		print(
@@ -92,6 +91,21 @@ class Plant:
 			f"{self.get_height():.1f}cm, "
 			f"{self.get_age()} days old"
 		)
+		self._stats.show_calls += 1
+		
+	@staticmethod
+	def is_older_than_year(days: int) -> bool:
+		return days > 365
+
+	@classmethod
+	def anonymous(cls) -> "Plant":
+		return cls("Unknown plant", 0.0, 0, 0.0)
+	
+	class Stats:
+		def __init__(self):
+			self.grow_calls = 0
+			self.age_calls = 0
+			self.show_calls = 0
 		
 class Flower(Plant):
 	def __init__(
@@ -108,14 +122,14 @@ class Flower(Plant):
 	def bloom(self) -> None:
 		self.bloomed = True
 
-	def flower_show(self) -> None:
+	def show(self) -> None:
 		super().show()
 		print(f" Color: {self.color}")
+		
 		if self.bloomed:
 			print(" Rose is blooming beautifully!")
 		else:
 			print(" Rose has not bloomed yet")
-			print(" [asking the rose to bloom]")
 
 
 class Tree(Plant):
@@ -128,8 +142,9 @@ class Tree(Plant):
 		) -> None:
 		super().__init__(name, height, days_old)
 		self.trunk_diameter = trunk_diameter
+		self._shade = 0
 
-	def tree_show(self) -> None:
+	def show(self) -> None:
 		super().show()
 		print(f" Trunk diameter: {self.trunk_diameter:.1f}cm")
 
@@ -153,7 +168,7 @@ class Vegetable(Plant):
 		self.harvest_season = harvest_season
 		self.nutritional_value = nutritional_value
 
-	def vegetable_show(self) -> None:
+	def show(self) -> None:
 		super().show()
 		print(f" Harvest season: {self.harvest_season}")
 		print(f" Nutritional value: {self.nutritional_value}")
@@ -169,29 +184,36 @@ class Vegetable(Plant):
 
 
 if __name__ == "__main__":
-	print("=== Garden Plant Types ===")
+	print("=== Garden statistics ===")
+	print("=== Check year-old")
+	print(f"Is 30 days more than a year? -> {Plant.is_older_than_year(30)}")
+	print(f"Is 400 days more than a year? -> {Plant.is_older_than_year(400)}")
+	print("")
 
 	print("=== Flower")
 	rose = Flower("Rose", 15.0, 10, "red")
-	rose.flower_show()
+	rose.show()
+
+	print("[asking the rose to grow and bloom]")
 
 	rose.bloom()
-	rose.flower_show()
+	rose.show()
 
-	print("")
-	print("=== Tree")
-	oak = Tree("Oak", 200, 365, 5)
-	oak.tree_show()
 
-	print("[asking the oak to produce shade]")	
-	oak.produce_shade()
+	# print("")
+	# print("=== Tree")
+	# oak = Tree("Oak", 200, 365, 5)
+	# oak.show()
 
-	print("")
-	print("=== Vegetable")
-	tomato = Vegetable("Tomato", 5, 10, "April", 0)
-	tomato.vegetable_show()
+	# print("[asking the oak to produce shade]")	
+	# oak.produce_shade()
 
-	print("[make tomato grow and age for 20 days]")
+	# print("")
+	# print("=== Vegetable")
+	# tomato = Vegetable("Tomato", 5, 10, "April", 0)
+	# tomato.show()
 
-	tomato.time(20)
-	tomato.vegetable_show()
+	# print("[make tomato grow and age for 20 days]")
+
+	# tomato.time(20)
+	# tomato.show()
