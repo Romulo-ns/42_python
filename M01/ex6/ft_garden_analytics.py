@@ -115,9 +115,31 @@ class Flower(Plant):
         print(f" Color: {self.color}")
 
         if self.bloomed:
-            print(" Rose is blooming beautifully!")
+            print(f" {self.name} is blooming beautifully!")
         else:
-            print(" Rose has not bloomed yet")
+            print(f" {self.name} has not bloomed yet")
+
+
+class Seed(Flower):
+    def __init__(
+            self,
+            name: str,
+            height: float,
+            days_old: int,
+            growth: float,
+            color: str,
+    ) -> None:
+        super().__init__(name, height, days_old, growth, color)
+        self.seeds = 0
+
+    def bloom(self) -> None:
+        super().bloom()
+        self.seeds = 42
+        self._days_old += 20
+    
+    def show(self) -> None:
+        super().show()
+        print(f" Seeds: {self.seeds}")
 
 
 class Tree(Plant):
@@ -126,9 +148,10 @@ class Tree(Plant):
             name: str,
             height: float,
             days_old: int,
+            growth: float,
             trunk_diameter: float
     ) -> None:
-        super().__init__(name, height, days_old)
+        super().__init__(name, height, days_old, growth)
         self.trunk_diameter = trunk_diameter
         self._shade = 0
 
@@ -142,6 +165,11 @@ class Tree(Plant):
             f"now produces a shade of {self.get_height():.1f}cm "
             f"long and {self.trunk_diameter:.1f}cm wide."
         )
+        self._shade += 1
+
+    def stats_display(self) -> None:
+        super().stats_display()
+        print(f" {self._shade} shade")
 
 
 class Vegetable(Plant):
@@ -193,11 +221,24 @@ if __name__ == "__main__":
 
     print("")
     print("=== Tree")
-    # oak = Tree("Oak", 200, 365, 5)
-    # oak.show()
+    oak = Tree("Oak", 200, 365, 1, 5)
+    oak.show()
+    oak.stats_display()
 
-    # print("[asking the oak to produce shade]")
-    # oak.produce_shade()
+    print("[asking the oak to produce shade]")
+    oak.produce_shade()
+    oak.stats_display()
+
+    print("")
+    print("=== Seed")
+    sunflower = Seed("Sunflower", 80, 45, 30, "yellow")
+    sunflower.show()
+
+    print("[make sunflower grow, age and bloom]")
+    sunflower.bloom()
+    sunflower.show()
+    sunflower.age()
+    sunflower.stats_display()
 
     # print("")
     # print("=== Vegetable")
