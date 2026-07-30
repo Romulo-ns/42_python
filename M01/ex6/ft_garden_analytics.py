@@ -6,7 +6,7 @@
 #    By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/29 10:45:50 by romdo-na          #+#    #+#              #
-#    Updated: 2026/07/29 12:53:02 by romdo-na         ###   ########.fr        #
+#    Updated: 2026/07/30 10:39:03 by romdo-na         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,10 +33,12 @@ class Plant:
 		name: str,
 		height: float,
 		days_old: int,
+		growth: float,
 	) -> None:
 		self.name = name
 		self._height = height
 		self._days_old = days_old
+		self._growth = growth
 		self._stats = Plant.Stats()
 
 	# Getter
@@ -78,7 +80,7 @@ class Plant:
 			)
 
 	def grow(self) -> None:
-		self._height += 0.8
+		self._height += self._growth
 		self._stats.grow_calls += 1
 	
 	def age(self) -> None:
@@ -99,13 +101,25 @@ class Plant:
 
 	@classmethod
 	def anonymous(cls) -> "Plant":
-		return cls("Unknown plant", 0.0, 0, 0.0)
+		return cls("Unknown plant", 0.0, 0)
 	
 	class Stats:
 		def __init__(self):
 			self.grow_calls = 0
 			self.age_calls = 0
 			self.show_calls = 0
+
+		def display(self) -> None:
+			print(
+				f"Stats: "
+				f"{self.grow_calls} grow, "
+				f"{self.age_calls} age, "
+				f"{self.show_calls} show"
+			)
+	
+	def stats_display(self) -> None:
+		print(f"[statistics for {self.name}]")
+		self._stats.display()
 		
 class Flower(Plant):
 	def __init__(
@@ -113,13 +127,15 @@ class Flower(Plant):
 			name: str, 
 			height: float, 
 			days_old: int,
+			growth: float,
 			color: str,
 		) -> None:
-		super().__init__(name, height, days_old)
+		super().__init__(name, height, days_old, growth)
 		self.color = color
 		self.bloomed = False
 
 	def bloom(self) -> None:
+		self.grow()
 		self.bloomed = True
 
 	def show(self) -> None:
@@ -191,17 +207,19 @@ if __name__ == "__main__":
 	print("")
 
 	print("=== Flower")
-	rose = Flower("Rose", 15.0, 10, "red")
+	rose = Flower("Rose", 15.0, 10, 8, "red")
+
 	rose.show()
+	rose.stats_display()
 
 	print("[asking the rose to grow and bloom]")
 
 	rose.bloom()
 	rose.show()
+	rose.stats_display()
 
-
-	# print("")
-	# print("=== Tree")
+	print("")
+	print("=== Tree")
 	# oak = Tree("Oak", 200, 365, 5)
 	# oak.show()
 
