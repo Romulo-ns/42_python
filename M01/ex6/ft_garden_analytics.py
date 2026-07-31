@@ -72,7 +72,7 @@ class Plant:
 
     @classmethod
     def anonymous(cls) -> "Plant":
-        return cls("Unknown plant", 0.0, 0)
+        return cls("Unknown plant", 0.0, 0, 0.0)
 
     class Stats:
         def __init__(self):
@@ -178,10 +178,11 @@ class Vegetable(Plant):
             name: str,
             height: float,
             days_old: int,
+            growth: float,
             harvest_season: str,
             nutritional_value: float
     ) -> None:
-        super().__init__(name, height, days_old)
+        super().__init__(name, height, days_old, growth)
         self.harvest_season = harvest_season
         self.nutritional_value = nutritional_value
 
@@ -190,12 +191,9 @@ class Vegetable(Plant):
         print(f" Harvest season: {self.harvest_season}")
         print(f" Nutritional value: {self.nutritional_value}")
 
-    def vegetable_grow(self) -> None:
-        self._height += 2.1
-
     def time(self, days: int) -> None:
         for _ in range(days):
-            self.vegetable_grow()
+            self.grow()
             self.age()
             self.nutritional_value += 1
 
@@ -242,10 +240,16 @@ if __name__ == "__main__":
 
     # print("")
     # print("=== Vegetable")
-    # tomato = Vegetable("Tomato", 5, 10, "April", 0)
+    # tomato = Vegetable("Tomato", 5, 10, 2.1, "April", 0)
     # tomato.show()
 
     # print("[make tomato grow and age for 20 days]")
 
     # tomato.time(20)
     # tomato.show()
+
+    print("")
+    print("=== Anonymous")
+    anonymous = Plant.anonymous()
+    anonymous.show()
+    anonymous.stats_display()
