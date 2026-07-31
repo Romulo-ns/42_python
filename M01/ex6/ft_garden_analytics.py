@@ -136,7 +136,7 @@ class Seed(Flower):
         super().bloom()
         self.seeds = 42
         self._days_old += 20
-    
+
     def show(self) -> None:
         super().show()
         print(f" Seeds: {self.seeds}")
