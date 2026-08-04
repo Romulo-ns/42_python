@@ -35,30 +35,21 @@ def test_custom_errors() -> None:
 
     print("Testing WaterError...")
     try:
-        raise PlantError("The tomato plant is wilting!")
-    except GardenError as error:
-        print(f"Caught {error.__class__.__name__}: {error}\n")
-
-    print("Testing WaterError...")
-    try:
         raise WaterError("Not enough water in the tank!")
     except GardenError as error:
         print(f"Caught {error.__class__.__name__}: {error}\n")
 
-    print("Testing WaterError...")
+    print("Testing catching all garden errors...")
+    try:
+        raise WaterError("Not enough water in the tank!")
+    except GardenError as error:
+        print(f"Caught GardenError: {error}")
     try:
         raise PlantError("The tomato plant is wilting!")
     except GardenError as error:
-        print(f"Caught {error.__class__.__name__}: {error}\n")
+        print(f"Caught GardenError: {error}")
 
-    print("Testing catching all garden errors...")
-    
-
-
-
-
-    print("All custom error types work correctly!")
-
+    print("\nAll custom error types work correctly!")
 
 
 if __name__ == "__main__":

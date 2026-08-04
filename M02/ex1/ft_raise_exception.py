@@ -17,7 +17,7 @@ def test_temperature(temp: str) -> None:
         print(f"Caught input_temperature error: {error}\n")
 
 
-if __name__ == "__main__":
+def main() -> None:
     print("=== Garden Temperature ===\n")
 
     print("Input data is '25'")
@@ -33,3 +33,7 @@ if __name__ == "__main__":
 
     print("Input data is '-50'")
     test_temperature("-50")
+
+
+if __name__ == "__main__":
+    main()
