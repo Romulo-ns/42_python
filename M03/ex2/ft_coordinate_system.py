@@ -1,11 +1,10 @@
 #!/usr/bin/python3.10
-
-import math
-import sys
-
-
 def validate_syntax(position: list[str]) -> bool:
     if len(position) != 3:
+        print(
+            f"Enter new coordinates as floats in format 'x,y,z': "
+            f"{position}"
+        )
         print("Invalid syntax")
         return False
     return True
@@ -16,6 +15,10 @@ def validate_float(position: list[str]) -> bool:
         try:
             float(value)
         except ValueError:
+            print(
+                f"Enter new coordinates as floats in format 'x,y,z': "
+                f"{position[0]}, {position[1]}, {position[2]}"
+            )
             print(
                 f"Error on parameter '{value}': "
                 f"could not convert string to float: '{value}'"
@@ -30,10 +33,6 @@ def get_player_pos() -> None:
     while (True):
         text = input()
         position = text.split(',')
-        print(
-            f"Enter new coordinates as floats in format 'x,y,z': "
-            f"{position[0]}, {position[1]}, {position[2]}"
-            )
         if not validate_syntax(position):
             continue
         if not validate_float(position):
@@ -42,8 +41,12 @@ def get_player_pos() -> None:
         first_tuple = tuple(
             float(value) for value in position
         )
-
+        print(
+            f"Enter new coordinates as floats in format 'x,y,z': "
+            f"{first_tuple[0]}, {first_tuple[1]}, {first_tuple[2]}"
+        )
         print(f"Got a first tuple: {first_tuple}")
+        return
 
 # === Game Coordinate System ===
 # Get a first set of coordinates
