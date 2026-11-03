@@ -4,8 +4,13 @@ import sys
 
 
 def main() -> None:
+    if len(sys.argv) == 1:
+        print("Error: No inventory items provided.")
+        return
+
     print("=== Inventory System Analysis ===")
     inventory = {}
+
 
     for arg in sys.argv[1:]:
         parts = arg.split(":")
@@ -35,6 +40,40 @@ def main() -> None:
     total_quantity = sum(inventory.values())
     print(f"Total quantity of the {len(inventory)} items: {total_quantity}")
 
+    if total_quantity > 0:
+        for item in inventory:
+            percentage = inventory[item] / total_quantity * 100
+            print(f"Item {item} represents {percentage:.1f}%")
+
+    if inventory:
+        first_item = list(inventory.keys())[0]
+
+        most_abundant_item = first_item
+        most_abundant_quantity = inventory[first_item]
+
+        least_abundant_item = first_item
+        least_abundant_quantity = inventory[first_item]
+
+        for item in inventory:
+            quantity = inventory[item]
+
+            if quantity > most_abundant_quantity:
+                most_abundant_quantity = quantity
+                most_abundant_item = item
+
+            if quantity < least_abundant_quantity:
+                least_abundant_quantity = quantity
+                least_abundant_item = item
+
+    print(
+        f"Item most abundant: {most_abundant_item} "
+        f"with quantity {most_abundant_quantity}"
+    )
+
+    print(
+        f"Item least abundant: {least_abundant_item} "
+        f"with quantity {least_abundant_quantity}"
+    )
 
 if __name__ == "__main__":
     main()
