@@ -29,6 +29,12 @@ def main() -> None:
         inventory[item_name] = quantity
 
     print(f"Got inventory: {inventory}")
+    item_list = list(inventory.keys())
+    print(f"Item list: {item_list}")
+
+    total_quantity = sum(inventory.values())
+    print(f"Total quantity of the {len(inventory)} items: {total_quantity}")
+
 
 if __name__ == "__main__":
     main()
