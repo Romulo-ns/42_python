@@ -11,7 +11,6 @@ def main() -> None:
     print("=== Inventory System Analysis ===")
     inventory = {}
 
-
     for arg in sys.argv[1:]:
         parts = arg.split(":")
 
@@ -65,15 +64,19 @@ def main() -> None:
                 least_abundant_quantity = quantity
                 least_abundant_item = item
 
-    print(
-        f"Item most abundant: {most_abundant_item} "
-        f"with quantity {most_abundant_quantity}"
-    )
+        print(
+            f"Item most abundant: {most_abundant_item} "
+            f"with quantity {most_abundant_quantity}"
+        )
 
-    print(
-        f"Item least abundant: {least_abundant_item} "
-        f"with quantity {least_abundant_quantity}"
-    )
+        print(
+            f"Item least abundant: {least_abundant_item} "
+            f"with quantity {least_abundant_quantity}"
+        )
+
+    inventory.update({"magic_item": 1})
+    print(f"Updated inventory: {inventory}")
+
 
 if __name__ == "__main__":
     main()
