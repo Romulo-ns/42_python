@@ -36,6 +36,7 @@ def common_achievements(players: dict) -> set[str]:
 
     return common
 
+
 def unique_achievements(players: dict) -> dict:
     unique_players = {}
 
@@ -51,6 +52,16 @@ def unique_achievements(players: dict) -> dict:
         unique_players[player_name] = unique
 
     return unique_players
+
+
+def missing_achievements(players: dict, achievements: list[str]) -> dict:
+    missing_players = {}
+    all_achievements = set(achievements)
+
+    for player_name, player_achi in players.items():
+        missing_players[player_name] = player_achi.difference(all_achievements)
+
+    return missing_players
 
 
 def main() -> None:
@@ -95,9 +106,16 @@ def main() -> None:
 
     unique = unique_achievements(players)
     for player, achievements in unique.items():
-        print(f"Only {player} has: {achievements}")    
+        if len(achievements) > 0:
+            print(f"Only {player} has: {achievements}")
+        else:
+            print(f"{player} has: no unique achievements")
 
-    
+    print("\n")
+    missing = missing_achievements(players, achievements)
+    for player, achievements in missing.items():
+        print(f"{player} is missing: {achievements}")
+
 
 if __name__ == "__main__":
     main()
