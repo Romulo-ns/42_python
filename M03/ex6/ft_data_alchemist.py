@@ -2,6 +2,7 @@
 
 import random
 
+
 def main() -> None:
     print("=== Game Data Alchemist ===\n")
 
@@ -34,7 +35,7 @@ def main() -> None:
     print(f"Score average is {score_average:.2f}")
 
     high_scores = {
-        player: score for player, score in score_dict.items() 
+        player: score for player, score in score_dict.items()
         if score > score_average
         }
     print(f"High scores: {high_scores}")
