@@ -1,104 +1,124 @@
-<div align="center">
-
 # 🐍 42 Python
 
-<img src="https://img.shields.io/badge/42-Porto-black?style=for-the-badge">
-<img src="https://img.shields.io/badge/Python-3-blue?style=for-the-badge&logo=python">
-<img src="https://img.shields.io/badge/Status-In%20Progress-success?style=for-the-badge">
+<div align="center">
 
-Learning Python through the 42 School curriculum.
+![42 Porto](https://img.shields.io/badge/42-Porto-black?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3-blue?style=for-the-badge&logo=python)
+![Status](https://img.shields.io/badge/Status-In%20Progress-success?style=for-the-badge)
+
+**Learning Python through the 42 School curriculum.**
 
 </div>
 
 ---
 
-# 📖 About
+## 📖 About
 
-This repository contains my solutions for the **42 Python Piscine**, where each module introduces new Python concepts through practical exercises.
+This repository contains my solutions for the **42 Python Piscine**, a hands-on learning journey focused on developing programming skills through practical exercises and progressively challenging projects.
 
-The project is designed to progressively build knowledge, starting from Python fundamentals and moving toward object-oriented programming, data manipulation, and software design.
+Each module introduces new Python concepts, starting with programming fundamentals and progressing toward data structures, object-oriented programming, algorithms, and software design.
 
-Every exercise was developed following the school's requirements while focusing on clean, readable, and maintainable code.
+All exercises are developed according to the school's requirements, focusing on clean, readable, and maintainable code.
 
----
+## 🎯 Objectives
 
-# 🎯 Objectives
+- Learn Python syntax and best practices.
+- Develop problem-solving and analytical skills.
+- Understand object-oriented programming.
+- Practice writing clean and reusable code.
+- Improve algorithmic thinking.
+- Build a strong foundation in software development.
 
-- Learn Python syntax and best practices
-- Develop problem-solving skills
-- Understand object-oriented programming
-- Practice writing clean and reusable code
-- Improve algorithmic thinking
+## 📂 Repository Structure
 
----
-
-# 📂 Repository Structure
-
-```
+```text
 42_python/
 │
 ├── M00/
-│   ├── ex00
-│   ├── ex01
-│   ├── ex02
-│   ├── ex03
-│   ├── ex04
-│   ├── ex05
-│   ├── ex06
-│   └── ex07
+│   ├── ex00/
+│   ├── ex01/
+│   ├── ex02/
+│   ├── ex03/
+│   ├── ex04/
+│   ├── ex05/
+│   ├── ex06/
+│   └── ex07/
 │
 ├── M01/
-│   ├── ex00
-│   ├── ex01
-│   ├── ex02
-│   ├── ex03
-│   ├── ex04
-│   ├── ex05
-│   └── ex06
+│   ├── ex00/
+│   ├── ex01/
+│   ├── ex02/
+│   ├── ex03/
+│   ├── ex04/
+│   ├── ex05/
+│   └── ex06/
+│
+├── M02/
+│   └── ...
+│
+├── M03/
+│   └── ...
 │
 └── README.md
 ```
 
----
+*The directory structure is representative. Check each module folder for its complete exercise list.*
 
-# 📚 Modules
+## 📚 Modules
 
-## Module 00
+### Module 00 — Python Fundamentals
 
-Python Fundamentals
+Introduction to Python programming and its fundamental concepts.
 
-Exercises include:
+Topics include:
 
-- Hello World
-- Variables
-- Arithmetic
-- User Input
+- Variables and data types
+- Arithmetic operations
+- User input and output
 - Functions
+- Conditional statements
 - Loops
 - Recursion
 - Dictionaries
 
----
+### Module 01 — Intermediate Python
 
-## Module 01
+Exploring more advanced Python concepts and programming techniques.
 
-Intermediate Python
+Topics include:
 
-Exercises include:
-
-- Data Structures
-- Classes
-- Objects
-- Factory Pattern
+- Data structures
+- Classes and objects
+- Object-oriented programming
+- Factory pattern
 - Security
 - Analytics
-- Type Handling
+- Type handling
 
----
+### Module 02 — Advanced Python Concepts
 
-# 🚀 Running an Exercise
+Further development of Python programming skills through practical exercises.
 
-Clone the repository
+### Module 03 — Mastering Python Collections
+
+Working with Python collections and advanced data manipulation techniques.
+
+Topics include:
+
+- Lists, tuples, sets, and dictionaries
+- Set operations: union, intersection, and difference
+- Dictionary methods and manipulation
+- Generators and `yield`
+- Iterators
+- List comprehensions
+- Dictionary comprehensions
+- Type hints and typing
+- Command-line arguments (`sys.argv`)
+- Data validation and analysis
+
+## 🚀 Running an Exercise
+
+Clone the repository:
 
 ```bash
 git clone https://github.com/Romulo-ns/42_python.git
@@ -106,97 +126,82 @@ git clone https://github.com/Romulo-ns/42_python.git
 cd 42_python
 ```
 
-Run any exercise
+Run an exercise using Python 3:
 
 ```bash
-python3 M00/ex0/ft_hello_garden.py
+python3 M00/ex00/ft_hello_garden.py
 ```
 
-or
+Another example:
 
 ```bash
-python3 M01/ex3/ft_plant_factory.py
+python3 M03/ex00/your_script.py
 ```
 
----
+*Replace the example path with the actual exercise directory and filename.*
 
-# 💡 Concepts Covered
+## 💡 Concepts Covered
 
-✅ Variables
+- Variables and data types
+- Functions and modular programming
+- Conditional statements and loops
+- Recursion
+- Lists, tuples, sets, and dictionaries
+- List and dictionary comprehensions
+- Generators and iterators
+- Type hints
+- Command-line arguments
+- Data validation
+- Classes and objects
+- Encapsulation
+- Static methods
+- Factory pattern
+- Code organization
 
-✅ Functions
-
-✅ Loops
-
-✅ Recursion
-
-✅ Lists
-
-✅ Dictionaries
-
-✅ Type Hints
-
-✅ Classes
-
-✅ Objects
-
-✅ Encapsulation
-
-✅ Static Methods
-
-✅ Factory Pattern
-
-✅ Code Organization
-
----
-
-# 🛠 Technologies
+## 🛠 Technologies & Tools
 
 - Python 3
 - MyPy
 - Git
 - GitHub
+- Linux
 
----
-
-# 📈 Progress
+## 📈 Progress
 
 | Module | Status |
-|---------|--------|
+|:---|:---:|
 | M00 | ✅ Completed |
 | M01 | ✅ Completed |
-| M02 | ⏳ Coming Soon |
-| M03 | ⏳ Coming Soon |
+| M02 | ✅ Completed |
+| M03 | ✅ Completed |
 | M04 | ⏳ Coming Soon |
 
----
+<details>
+<summary>Completed modules</summary>
 
-# 🎓 About 42
+**4 modules completed — continuing the Python learning journey.**
 
-42 is an innovative computer science school based on peer-to-peer learning, project-based education, and real-world software development.
+</details>
 
-More information:
+## 🎓 About 42
 
-https://42.fr/
+42 is an innovative computer science school based on peer-to-peer learning, project-based education, and practical software development.
 
----
+Students learn by solving real programming challenges, collaborating with peers, and developing independent problem-solving skills.
 
-# 👨‍💻 Author
+More information: [42 Network](https://42.fr/)
+
+## 👨‍💻 Author
 
 **Romulo Santos**
 
-GitHub
-
-https://github.com/Romulo-ns
-
-LinkedIn
-
-https://www.linkedin.com/in/romulo-santos-528149175
+- GitHub: [Romulo-ns](https://github.com/Romulo-ns)
+- LinkedIn: [Romulo Santos](https://www.linkedin.com/in/romulo-santos-528149175)
 
 ---
 
 <div align="center">
 
-⭐ If you found this repository useful, consider giving it a star!
+⭐ If you find this repository useful, consider giving it a star!
 
 </div>
