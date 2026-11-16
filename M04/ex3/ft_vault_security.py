@@ -1,5 +1,8 @@
 #!/usr/bin/python3.10
 
+import sys
+
+
 def secure_archive(
     filename: str,
     action: str = "read",
@@ -21,11 +24,34 @@ def secure_archive(
         return False, f"{error}"
 
 
-
 def main() -> None:
+    if len(sys.argv) != 2:
+        print("Usage: python3 ft_vault_security.py <filename>")
+        return
+
+    filename = sys.argv[1]
+
     print("=== Cyber Archives Security ===")
 
+    success, message = secure_archive(filename)
 
+    if success:
+        print(message)
+    else:
+        print(f"Error: {message}")
+        return
+
+    success, message = secure_archive(
+        "archive.txt",
+        "write",
+        "Hello 42!"
+    )
+
+    if success:
+        print(message)
+    else:
+        print(f"Error: {message}")
+        return
 
 
 if __name__ == "__main__":
