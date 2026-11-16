@@ -1,8 +1,5 @@
 #!/usr/bin/python3.10
 
-import sys
-
-
 def secure_archive(
     filename: str,
     action: str = "read",
@@ -16,8 +13,7 @@ def secure_archive(
                 return True, content
         elif action == "write":
             with open(filename, "w") as file:
-                content = file.read()
-                new_content = file.write(content)
+                file.write(content)
                 return True, "Content successfully written to file"
         else:
             return False, "invalid action"
@@ -28,6 +24,7 @@ def secure_archive(
 
 def main() -> None:
     print("=== Cyber Archives Security ===")
+
 
 
 
